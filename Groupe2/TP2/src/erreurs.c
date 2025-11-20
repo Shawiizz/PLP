@@ -1,3 +1,8 @@
+/*
+ * erreurs.c
+ * Objectif : Montrer une erreur de tableau
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 
 int main() {

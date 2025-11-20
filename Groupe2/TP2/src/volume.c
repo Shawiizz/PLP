@@ -1,3 +1,8 @@
+/*
+ * volume.c
+ * Objectif : Calculer le volume d'une sphère (fonction)
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <math.h>
 #include "sphere.h"
 

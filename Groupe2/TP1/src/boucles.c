@@ -1,11 +1,16 @@
+/*
+ * boucles.c
+ * Objectif : Afficher des triangles avec différentes boucles (for, while, do while)
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 
 int main () {
     int compteur;
     printf("\nVeuillez entrez une valeur entiere : ");
-    scanf("%d", &compteur);
+    scanf("%d", &compteur); // saisie utilisateur
     
-    if (compteur >= 10) {
+    if (compteur >= 10) { // on limite la taille
         printf("\n error : entrez une valeur < 10");
         return 1;
     }
@@ -17,14 +22,13 @@ int main () {
         for (int j = 1; j <= i ; j++) {
             if (i != compteur ) { // Pour que la derniere ligne ne soit que des "*"
                 if (j == 1 || j == i) {
-                    printf("* ");
+                    printf("* "); // bords
                 } else {
-                    printf("# ");
+                    printf("# "); // intérieur
                 }
             } else { 
                 printf("* "); // faire la dernière ligne
             }
-
         }
         printf("\n");
     }
@@ -32,7 +36,7 @@ int main () {
     printf("\nTriangle rectangle 2 :\n\n");
    
 
-    // triangle rectangle 2 :
+    // triangle rectangle 2 : (version while)
     int i = 1;
     int j;
     while (i <=compteur) {
@@ -41,10 +45,10 @@ int main () {
         {
             if (i != compteur ) { // Pour que la derniere ligne ne soit que des "*"
                 if (j == 1 || j == i) {
-                    printf("* ");
+                    printf("* "); // bords
                 } 
                 else {
-                    printf("# ");
+                    printf("# "); // intérieur
                 }
             } 
             else { 
@@ -57,16 +61,16 @@ int main () {
     }
 
     printf("\nTriangle rectangle 3 :\n\n");
-// triangle 3 : 
+    // triangle 3 : (version do while)
     i = 1;
     do {
         j=1;
         do {
             if (i != compteur ) { // Pour que la derniere ligne ne soit que des "*"
                 if (j == 1 || j == i) {
-                    printf("* ");
+                    printf("* "); // bords
                 } else {
-                    printf("# ");
+                    printf("# "); // intérieur
                 }
             } else { 
                 printf("* "); // faire la dernière ligne

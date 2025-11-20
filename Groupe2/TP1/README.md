@@ -1,12 +1,14 @@
 # Bibliothèques
 * stdio.h
+* math.h (pour les calculs)
 
 # Références
-* Documentation du langage C sur internet
-* Le support de cours
+* Le support de cours (utile pour les bases)
+* Quelques recherches sur internet 
 
 # Difficulté
 * Pas de réelles difficultés
+* Juste un peu de temps perdu sur les erreurs de compilation au début
 
 # Commentaires
-* Nous avions téléchargé le TP avant sa mise à jour sur le dépot GitHub, nous avons donc du refaire quelques exercices qui ont été modifiés. Il se peut qu'il reste quelques réponses de l'ancien TP.
+* On a surtout appris à bien utiliser gcc et à faire attention aux warnings

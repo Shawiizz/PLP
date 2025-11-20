@@ -1,3 +1,8 @@
+/*
+ * bd_école.c
+ * Objectif : Gérer les infos de plusieurs étudiants avec une structure
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 #include <string.h>
 
@@ -25,21 +30,21 @@ int main() {
 		printf("Nom : ");
 		fgets(buffer, TAILLE_NOM, stdin);
 		buffer[strcspn(buffer, "\n")] = '\0';
-		strcpy(etudiants[i].nom, buffer);
+		strcpy(etudiants[i].nom, buffer); // copie du nom
 
 		printf("Prenom : ");
 		fgets(buffer, TAILLE_PRENOM, stdin);
 		buffer[strcspn(buffer, "\n")] = '\0';
-		strcpy(etudiants[i].prenom, buffer);
+		strcpy(etudiants[i].prenom, buffer); // copie du prénom
 
 		printf("Adresse : ");
 		fgets(buffer, TAILLE_ADRESSE, stdin);
 		buffer[strcspn(buffer, "\n")] = '\0';
-		strcpy(etudiants[i].adresse, buffer);
+		strcpy(etudiants[i].adresse, buffer); // copie de l'adresse
 
 		for (j = 0; j < NB_NOTES; j++) {
 			printf("Note %d : ", j+1);
-			scanf("%f", &etudiants[i].notes[j]);
+			scanf("%f", &etudiants[i].notes[j]); // saisie des notes
 		}
 		while (getchar() != '\n'); // Vider le buffer
 	}
@@ -52,7 +57,7 @@ int main() {
 		printf("Adresse : %s\n", etudiants[i].adresse);
 		printf("Notes : ");
 		for (j = 0; j < NB_NOTES; j++) {
-			printf("%.2f ", etudiants[i].notes[j]);
+			printf("%.2f ", etudiants[i].notes[j]); // affichage des notes
 		}
 		printf("\n");
 	}

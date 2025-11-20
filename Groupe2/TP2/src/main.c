@@ -1,3 +1,8 @@
+/*
+ * main.c
+ * Objectif : Calculer et afficher le volume et la surface d'une sphère (utilise sphere.h)
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 #include "sphere.h"
 

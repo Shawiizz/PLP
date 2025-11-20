@@ -1,3 +1,8 @@
+/*
+ * binaire.c
+ * Objectif : Convertir un nombre entier en binaire et l'afficher
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 
 int main () {

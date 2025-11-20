@@ -1,3 +1,8 @@
+/*
+ * couleurs.c
+ * Objectif : Compter les couleurs distinctes dans un tableau de couleurs
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,7 +12,7 @@ typedef struct {
 
 // Compare deux couleurs (1 si égales, 0 sinon)
 int couleurs_egales(Couleur c1, Couleur c2) {
-	return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b && c1.a == c2.a;
+	return c1.r == c2.r && c1.g == c2.g && c1.b == c2.b && c1.a == c2.a; // test d'égalité
 }
 
 int main() {
@@ -62,14 +67,14 @@ int main() {
 	for (i = 0; i < sizeof(couleurs)/sizeof(Couleur); i++) {
 		int trouve = 0;
 		for (j = 0; j < nb_distinctes; j++) {
-			if (couleurs_egales(couleurs[i], distinctes[j])) {
+			if (couleurs_egales(couleurs[i], distinctes[j])) { // si déjà vue
 				occurrences[j]++;
 				trouve = 1;
-				break;
+				break; // on arrête dès qu'on trouve
 			}
 		}
 		if (!trouve) {
-			distinctes[nb_distinctes] = couleurs[i];
+			distinctes[nb_distinctes] = couleurs[i]; // nouvelle couleur
 			occurrences[nb_distinctes] = 1;
 			nb_distinctes++;
 		}

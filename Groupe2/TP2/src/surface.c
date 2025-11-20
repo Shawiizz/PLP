@@ -1,3 +1,8 @@
+/*
+ * surface.c
+ * Objectif : Calculer la surface d'une sphère (fonction)
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <math.h>
 #include "sphere.h"
 

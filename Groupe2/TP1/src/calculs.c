@@ -1,3 +1,8 @@
+/*
+ * calculs.c
+ * Objectif : Calculatrice simple avec switch (opérations de base et logiques)
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 
 int main() {

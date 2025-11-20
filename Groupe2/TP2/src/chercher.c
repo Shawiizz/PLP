@@ -1,3 +1,8 @@
+/*
+ * chercher.c
+ * Objectif : Chercher une phrase dans un tableau de phrases
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 
 #define NB_PHRASES 10
@@ -8,7 +13,7 @@ int chaines_egales(char *s1, char *s2) {
     int i = 0;
     while (s1[i] != '\0' && s2[i] != '\0') {
         if (s1[i] != s2[i])
-            return 0;
+            return 0; // dès qu'un caractère diffère, on arrête
         i++;
     }
     // Si les deux chaînes se terminent en même temps, elles sont égales
@@ -45,9 +50,9 @@ int main() {
     }
 
     for (i = 0; i < NB_PHRASES; i++) {
-        if (chaines_egales(phrases[i], recherche)) {
+        if (chaines_egales(phrases[i], recherche)) { // test d'égalité
             trouve = 1;
-            break;
+            break; // on arrête dès qu'on trouve
         }
     }
 

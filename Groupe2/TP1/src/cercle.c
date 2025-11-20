@@ -1,3 +1,8 @@
+/*
+ * cercle.c
+ * Objectif : Calculer et afficher l'aire et le périmètre d'un cercle à partir du rayon
+ * Auteurs : Maël Feri et Aloïs Lienard
+ */
 #include <stdio.h>
 
 int main () {
