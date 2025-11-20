@@ -1,2 +1,2 @@
-1. Maël FERI
-2. Alois LIENARD
+1. Aloïs LIENARD
+2. Maël FERI
