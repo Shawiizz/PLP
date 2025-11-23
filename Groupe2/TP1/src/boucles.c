@@ -22,9 +22,9 @@ int main () {
         for (int j = 1; j <= i ; j++) {
             if (i != compteur ) { // Pour que la derniere ligne ne soit que des "*"
                 if (j == 1 || j == i) {
-                    printf("* "); // bords
+                    printf("* "); // bords du triangle
                 } else {
-                    printf("# "); // intérieur
+                    printf("# "); // intérieur du triangle
                 }
             } else { 
                 printf("* "); // faire la dernière ligne
@@ -45,10 +45,10 @@ int main () {
         {
             if (i != compteur ) { // Pour que la derniere ligne ne soit que des "*"
                 if (j == 1 || j == i) {
-                    printf("* "); // bords
+                    printf("* "); // bords du triangle
                 } 
                 else {
-                    printf("# "); // intérieur
+                    printf("# "); // intérieur du triangle
                 }
             } 
             else { 
@@ -68,9 +68,9 @@ int main () {
         do {
             if (i != compteur ) { // Pour que la derniere ligne ne soit que des "*"
                 if (j == 1 || j == i) {
-                    printf("* "); // bords
+                    printf("* "); // bords du triangle
                 } else {
-                    printf("# "); // intérieur
+                    printf("# "); // intérieur du triangle
                 }
             } else { 
                 printf("* "); // faire la dernière ligne

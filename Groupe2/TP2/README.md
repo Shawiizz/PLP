@@ -10,7 +10,7 @@
 
 # Difficulté
 * Un peu plus dur que le TP1, surtout la gestion des fichiers et des structures
-* Les exercices sur les chaînes étaient sympas mais parfois piégeux
+* Les exercices sur les chaînes étaient parfois piégeux
 
 # Commentaires
 * On a passé pas mal de temps à comprendre comment lire et écrire dans les fichiers

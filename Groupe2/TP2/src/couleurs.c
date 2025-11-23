@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 typedef struct {
-	int r, g, b, a;
+	unsigned char r, g, b, a;
 } Couleur;
 
 // Compare deux couleurs (1 si égales, 0 sinon)
