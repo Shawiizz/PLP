@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+#include "../../TP4/ex4_3.h"
 
 /**
  * Programme qui simule un interpréteur de commandes simple.
@@ -10,6 +12,7 @@ void afficher_version(const char *args, int *continuer);
 void afficher_aide(const char *args, int *continuer);
 void traiter_echo(const char *args, int *continuer);
 void traiter_quit(const char *args, int *continuer);
+void afficher_date(const char *args, int *continuer);
 
 // Structure pour stocker les commandes et leurs fonctions associées
 typedef void (*cmd_fn_t)(const char *args, int *continuer);
@@ -25,10 +28,11 @@ struct Command
 // Déclaration du tableau des commandes
 static struct Command commands[] =
 {
-    {"version", {"version"}, afficher_version, "Affiche la version de l'interpréteur"},
-    {"help", {"aide"}, afficher_aide, "Affiche les commandes disponibles"},
-    {"echo", {"afficher"}, traiter_echo, "Affiche le texte fourni en argument (echo <texte>)"},
-    {"quit", {"quitter"}, traiter_quit, "Quitte l'interpréteur"},
+    {"version", {"version", NULL}, afficher_version, "Affiche la version de l'interpréteur"},
+    {"help", {"aide", NULL}, afficher_aide, "Affiche les commandes disponibles"},
+    {"echo", {"afficher", NULL}, traiter_echo, "Affiche le texte fourni en argument (echo <texte>)"},
+    {"quit", {"quitter", "exit", NULL}, traiter_quit, "Quitte l'interpréteur"},
+    {"date", {"time", NULL}, afficher_date, "Affiche la date actuelle"},
 };
 
 // Nombre de commandes
@@ -39,7 +43,15 @@ void afficher_version(const char *args, int *continuer)
     printf("Version: 1.0.0\n");
 }
 
-void afficher_aide(const char *args, int *continuer)
+// Date actuelle 
+void afficher_date(const char *args, int *continuer){
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    printf("Date actuelle : ");
+    printf("%02d/%02d/%d\n", tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900);
+}
+
+void afficher_aide(const char *args, int *contnuer)
 {
     printf("Commandes disponibles:\n");
     for (int i = 0; i < command_count; i++)
@@ -95,6 +107,18 @@ int main()
         if (ligne[0] == '\0')
         {
             printf("\n");
+            continue;
+        }
+
+        // Regarde si ça commence par un chiffre
+        if ((ligne[0] >= '0' && ligne[0] <= '9') || ligne[0] == '(')
+        {
+            char postfix[100];
+            infix_to_postfix(ligne, postfix);
+
+            int result = 0;
+            evaluate_postfix(postfix, &result);
+            printf("%d\n", result);
             continue;
         }
 
