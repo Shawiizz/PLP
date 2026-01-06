@@ -11,10 +11,14 @@ void evaluate_postfix(const char* postfix, int* result) {
             continue;
         }
 
-        // Si c'est un chiffre, on le pousse sur la pile
+        // Si c'est un chiffre, on lit le nombre complet et on le pousse sur la pile
         if (postfix[i] >= '0' && postfix[i] <= '9') {
-            stack[++top] = postfix[i] - '0';
-            i++;
+            int num = 0;
+            while (postfix[i] >= '0' && postfix[i] <= '9') {
+                num = num * 10 + (postfix[i] - '0');
+                i++;
+            }
+            stack[++top] = num;
             continue;
         } 
 

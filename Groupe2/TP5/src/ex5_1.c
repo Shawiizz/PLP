@@ -34,7 +34,7 @@ void getVariableContent(const char* str, int* index, char* outStr, int* outType)
             *outType = 1; // int type
         }
         // Ne pas ajouter les espaces en fin de valeur
-        if (str[*index] != ' ' || str[*index + 1] != ';' && str[*index + 1] != '\0') {
+        if (str[*index] != ' ' || (str[*index + 1] != ';' && str[*index + 1] != '\0')) {
             outStr[j++] = str[*index];
         }
         (*index)++;
@@ -94,10 +94,15 @@ void infix_to_postfix(const char* infix, char* postfix, Pair* variables) {
     for (int i = 0; infix[i] != '\0'; i++) {
         char c = infix[i];
         if (c == ' ') continue; // Ignore les espaces
-        // Si c'est un chiffre, on l'ajoute directement à la sortie
+        // Si c'est un chiffre, on récupère le nombre complet
         if ((c >= '0' && c <= '9')) {
-            postfix[j++] = c;
+            // Lire tous les chiffres du nombre
+            while (infix[i] >= '0' && infix[i] <= '9') {
+                postfix[j++] = infix[i];
+                i++;
+            }
             postfix[j++] = ' ';
+            i--; // Reculer d'un cran car la boucle for va incrémenter i
         } 
         // Si c'est une parenthèse ouvrante, on la pousse sur la pile
         else if (c == '(') { 
@@ -140,18 +145,31 @@ void infix_to_postfix(const char* infix, char* postfix, Pair* variables) {
                     // C'est une utilisation de variable, on l'ajoute à la sortie
                     getFullStringUntilOperator(infix, &i, currentVarName);
                 
+                    // Vérifier si c'est juste un nom de variable sans opérateur (fin de chaîne)
+                    int isOnlyVariable = (infix[i + 1] == '\0' && top == -1 && j == 0);
+                    
                     // Chercher la variable dans le tableau
+                    int variableFound = 0;
                     for (int k = 0; k < 100; k++) {
                         if (strcmp(variables[k].key, currentVarName) == 0) {
+                            variableFound = 1;
                             if(variables[k].type == 0) {
                                 // Variable non définie
                                 printf("Erreur: variable '%s' non définie.\n", currentVarName);
-                                break;
+                                postfix[0] = '\0'; // Vider postfix pour éviter l'évaluation
+                                return;
+                            }
+                            // Si c'est juste le nom de la variable, afficher sa valeur
+                            if (isOnlyVariable) {
+                                printf("%s\n", variables[k].value);
+                                postfix[0] = '\0'; // Pas besoin d'évaluer
+                                return;
                             }
                             if(variables[k].type == 3) {
-                                // Ajouter des guillemets si c'est une string
+                                // Impossible de faire un calcul avec une string
                                 printf("Erreur: impossible d'effectuer un calcul avec une variable de type string '%s'.\n", currentVarName);
-                                break;
+                                postfix[0] = '\0'; // Vider postfix pour éviter l'évaluation
+                                return;
                             }
                             // Ajouter la valeur de la variable à la sortie
                             int len = strlen(variables[k].value);
@@ -161,6 +179,12 @@ void infix_to_postfix(const char* infix, char* postfix, Pair* variables) {
                             postfix[j++] = ' ';
                             break;
                         }
+                    }
+                    // Si la variable n'a pas été trouvée, afficher une erreur
+                    if (!variableFound) {
+                        printf("Erreur: variable '%s' n'existe pas.\n", currentVarName);
+                        postfix[0] = '\0'; // Vider postfix pour éviter l'évaluation
+                        return;
                     }
 
                 } else {
